@@ -4,8 +4,9 @@ import "./index.css";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
 }
-const props = { name: "Taro" };
-root.render(Welcome(props));
+root.render(<Welcome name="TAKAGI" />);
