@@ -9,13 +9,18 @@ class Toggle extends React.Component {
     super(props);
     this.state = { switch: "OFF" };
   }
-  toggle = () => {
+  toggle = (str, e) => {
     this.setState((state) => ({
       switch: state.switch === "ON" ? "OFF" : "ON",
     }));
+    console.log(str, e);
   };
   render() {
-    return <button onClick={this.toggle}>{this.state.switch}</button>;
+    return (
+      <button onClick={(e) => this.toggle("hoge", e)}>
+        {this.state.switch}
+      </button>
+    );
   }
 }
 root.render(<Toggle />);
