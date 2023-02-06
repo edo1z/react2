@@ -4,14 +4,24 @@ import "./index.css";
 // import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const Welcome = (props) => <h1>Hello, {props.name}</h1>;
-const App = (props) => {
-  return (
-    <div>
-      <Welcome name="Taro" />
-      <Welcome name="Jiro" />
-      <Welcome name="Saburo" />
-    </div>
-  );
-};
-root.render(<App />);
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+  componentDidMount() {
+    this.timerId = setInterval(() => this.countUp(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
+  countUp() {
+    this.setState((state) => ({ count: state.count + 1 }));
+  }
+  render() {
+    return <h3>COUNT: {this.state.count}</h3>;
+  }
+}
+root.render(<Counter />);
