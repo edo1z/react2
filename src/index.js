@@ -21,7 +21,10 @@ class Counter extends React.Component {
     this.setState((state) => ({ count: state.count + 1 }));
   }
   render() {
-    return <h3>COUNT: {this.state.count}</h3>;
+    return <FormattedCount count={this.state.count} />;
   }
+}
+function FormattedCount(props) {
+  return <h3>[COUNT]: {props.count}</h3>;
 }
 root.render(<Counter />);
