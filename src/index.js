@@ -4,15 +4,18 @@ import "./index.css";
 // import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const Form = (props) => {
-  const submit = (e) => {
-    e.preventDefault();
-    console.log("submit!");
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { switch: "OFF" };
+  }
+  toggle = () => {
+    this.setState((state) => ({
+      switch: state.switch === "ON" ? "OFF" : "ON",
+    }));
   };
-  return (
-    <form onSubmit={submit}>
-      <button>hoge</button>
-    </form>
-  );
-};
-root.render(<Form />);
+  render() {
+    return <button onClick={this.toggle}>{this.state.switch}</button>;
+  }
+}
+root.render(<Toggle />);
