@@ -4,4 +4,6 @@ import "./index.css";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<p>Hello World!</p>);
+const username = (name) => `Bob ${name}`;
+const msg = <p>Hello {username("Tanaka")}!</p>;
+root.render(msg);
